@@ -15,11 +15,13 @@ from scipy.optimize import linprog
 
 class MinSumWMD:
 
+    def __init__(self):
+        self.model = gensim.models.KeyedVectors.load_word2vec_format('ja-en.txt')
+
     # Convert the tokens to word vectors
     def convert(self, token_ja, token_en):
-        model = gensim.models.KeyedVectors.load_word2vec_format('ja-en.txt')
-        vectors_ja = [model[w] for w in token_ja]
-        vectors_en = [model[w] for w in token_en]
+        vectors_ja = [self.model[w] for w in token_ja]
+        vectors_en = [self.model[w] for w in token_en]
         return vectors_ja, vectors_en
 
     # Add corresponding Euclidean distance to a_ub matrix
