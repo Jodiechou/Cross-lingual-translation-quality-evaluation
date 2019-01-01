@@ -12,7 +12,6 @@ import nltk
 import csv
 from collections import Counter
 from scipy.optimize import linprog
-import xlrd, xlwt
 
 class MinSumWMD:
 
@@ -135,33 +134,28 @@ if __name__ == "__main__":
     min_wmd = MinSumWMD()
     mecab = MeCab.Tagger("-Owakati")
     t_score =[]
+    with open("57-107.txt", "w") as res_file:
 
-    
-    with open("results_betterCorpus.txt", "w") as res_file:
+        with open("57-107.csv", "r", encoding="utf-8-sig") as f:
+            reader = csv.reader(f, delimiter=',')
+            for row in reader:
 
-
-        rows = []   #create an empty list to store rows
-        corpus = xlrd.open_workbook('better_instances.xlsx')  #open the Excel spreadsheet as workbook
-        sheet = corpus.sheet_by_index(0)    #get the first sheet
-        for l in range(1, sheet.nrows):  #iterate 1 to maxrows
-            rows = sheet.row_values(l, 0, sheet.ncols)  #iterate through the sheet and get data from rows in list
-     
-            token_ja = mecab.parse(rows[0].lower())
-            token_ja = token_ja.strip()
-            token_ja = token_ja.split(' ')
-                 
-            # English tokenisation
-            token_en = nltk.word_tokenize(rows[1].lower())
-            token_en = np.array(token_en)
-        
-            method5 = min_wmd.objective_function(token_ja, token_en)
-            # Save the final results
-            res_file.write("%f\n" % (method5))
-
-    #print("token_ja", token_ja)
-    #print("token_en", token_en)
-
-
+                # Japanese tokenisation
+                if row[0].startswith("#"):
+                   continue
+            
+                token_ja = mecab.parse(row[0].lower())
+                token_ja = token_ja.strip()
+                token_ja = token_ja.split(' ')
+            
+  
+                # English tokenisation
+                token_en = nltk.word_tokenize(row[1].lower())
+                token_en = np.array(token_en)
+                method5 = min_wmd.objective_function(token_ja, token_en)
+                # Save the final results
+                #res_file.write("%s, %s, %f\n" % (row[0], row[1], method5))
+                res_file.write("%f\n" % (method5))
     
     print("*******************Complete!********************")
 
