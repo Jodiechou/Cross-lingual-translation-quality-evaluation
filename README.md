@@ -1,4 +1,4 @@
-# Cross-lingual-translation-quality-evaluation
+# Unsupervised-evaluation-of-Human-Translation_Quality
 
-The "code" folder contains the original corpus.
-The "test" folder has the test corpus and the some bilingual embedded samples.
+This repository includes the code to replicate the experiments in the "Unsupervised Evaluation of Human Translation Quality (KDIR 2019)" paper.
+This project proposes different methods to evaluate the cross-lingual translation quality.
