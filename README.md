@@ -5,11 +5,14 @@ This project proposes different methods to evaluate the cross-lingual translatio
 
 ## Reference
 ### KDIR 2019
+```
 @inproceedings{zhou-bollegala-2019-translation-quality,
     title = "Unsupervised Evaluation of Human Translation Quality",
     author = "Zhou, Yi  and Bollegala, Danushka",
-    booktitle = "Proceedings of the 11th International Conference on Knowledge Discovery and Information Retrieval",
+    booktitle = "Proceedings of the 11th International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management, Volume 1: KDIR",
     year = "2019",
+    address = "Vienna, Austria",
     url = "https://www.insticc.org/Primoris/Resources/PaperPdf.ashx?idPaper=80645",
-    pages = "5682--5691"
+    pages = "55-64"
 }
+```
